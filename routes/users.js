@@ -20,7 +20,22 @@ router.get('/', async function (req, res, next) {
 
 });
 
-router.get('/:id', async function (req, ress, next) { });
+router.get('/:id', async function (req, res, next) {
+
+    const fetchedUser = await prisma.user.findMany({
+
+        where: {
+            id: parseInt(req.params.id),
+          },
+        select: {
+            email: true,
+            name: true,
+        },
+
+    });
+
+    return res.send(fetchedUser);
+ });
 
 router.post('/', async function (req, res, next) {
     const user = await prisma.user.create({
@@ -42,6 +57,20 @@ router.put('/:id', async function (req, res, next) {
     res.send(updateUser);
 });
 
-router.delete('/:id', async function (req, ress, next) { });
+router.delete('/:id', async function (req, res, next) { 
+
+    const deleteUsers = await prisma.user.deleteMany({
+        where: {
+          email: {
+            contains: 'prisma.io',
+          },
+        },
+      });
+
+      //to delete all users
+      //const deleteUsers = await prisma.user.deleteMany({})
+
+    return res.send(deleteUsers);
+});
 
 module.exports = router;
