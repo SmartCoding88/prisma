@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
 
 /* GET users listing. */
 
