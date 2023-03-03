@@ -25,7 +25,7 @@ router.get('/:id', async function (req, res, next) {
     const fetchedUser = await prisma.user.findMany({
 
         where: {
-            id: parseInt(req.params.id),
+            id: req.params.id,
           },
         select: {
             email: true,
@@ -48,7 +48,7 @@ router.post('/', async function (req, res, next) {
 router.put('/:id', async function (req, res, next) {
     const updateUser = await prisma.user.update({
         where: {
-            id: parseInt(req.params.id),
+            id: req.params.id,
         },
         data: {
             name: 'Viola the Magnificent',
@@ -61,9 +61,7 @@ router.delete('/:id', async function (req, res, next) {
 
     const deleteUsers = await prisma.user.deleteMany({
         where: {
-          email: {
-            contains: 'prisma.io',
-          },
+            id: req.params.id,
         },
       });
 
