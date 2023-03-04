@@ -10,6 +10,6 @@
         <li>- const {PrismaClient} = require("@prisma/client")</li>
         <li>- const prisma = new PrismaClient()</li>
     </ul>
-<li>npx prisma db push (COULUMN COUNT ERR=> RUN  sudo /opt/lampp/bin/mysql_upgrade)</li>
+<li>npx prisma db push (COLUMN COUNT ERR=> RUN  sudo /opt/lampp/bin/mysql_upgrade)</li>
 
 </ul>
